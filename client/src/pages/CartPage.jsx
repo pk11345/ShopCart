@@ -12,7 +12,7 @@ export default function CartPage() {
     if (user) {
       axios.get(`https://shopcart-api-c1rh.onrender.com/api/cart/${user.email}`)
         .then(res => {
-          console.log("Fetched Cart:", res.data);
+          
           setCart(res.data);
           setUser({ ...user, cart: res.data }); // Sync user state
           localStorage.setItem("user", JSON.stringify({ ...user, cart: res.data }));
