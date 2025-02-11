@@ -15,7 +15,7 @@ export default function LoginPage() {
     setError(""); // Reset error message before making a request
 
     try {
-      const res = await axios.post("http://localhost:5000/api/login", { email, password });
+      const res = await axios.post("https://shop-cart-three-sand.vercel.app/api/login", { email, password });
       setUser(res.data.user);
       localStorage.setItem("user", JSON.stringify(res.data.user));
       navigate("/");
