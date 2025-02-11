@@ -17,7 +17,7 @@ export default function LoginPage() {
     setError(""); // Reset error message before making a request
 
     try {
-      const res = await axios.post("http://localhost:5000/api/login", { email, password });
+      const res = await axios.post("https://shopcart-api-c1rh.onrender.com/api/login", { email, password });
       setUser(res.data.user);
       localStorage.setItem("user", JSON.stringify(res.data.user));
       navigate("/");

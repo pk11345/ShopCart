@@ -11,7 +11,7 @@ export default function SignupPage() {
  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:5000/api/signup", formData);
+    await axios.post("https://shopcart-api-c1rh.onrender.com/api/signup", formData);
     setUser({ name: formData.name, email: formData.email });
     navigate("/");
   };

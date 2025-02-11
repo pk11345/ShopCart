@@ -10,7 +10,7 @@ export default function CartPage() {
 
   useEffect(() => {
     if (user) {
-      axios.get(`http://localhost:5000/api/cart/${user.email}`)
+      axios.get(`https://shopcart-api-c1rh.onrender.com/api/cart/${user.email}`)
         .then(res => {
           console.log("Fetched Cart:", res.data);
           setCart(res.data);

@@ -36,7 +36,7 @@ export default function ProductPage() {
       };
       console.log("Payload:", payload); // Log the payload
   
-      const res = await axios.post("http://localhost:5000/api/cart", payload);
+      const res = await axios.post("https://shopcart-api-c1rh.onrender.com/api/cart", payload);
       console.log("Response:", res.data); // Log the response
   
       // Update user cart in React state
