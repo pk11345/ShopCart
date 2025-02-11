@@ -12,6 +12,25 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+// Add CORS headers middleware
+app.use((req, res, next) => {
+  //allow specific site
+  res.setHeader('Access-Control-Allow-Origin', 'https://shop-cart-zw33.vercel.app');
+  //if allow all sites
+  //res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true'); // if need to send cookies
+
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+      res.status(200).end(); // Respond to OPTIONS requests
+      return;
+  }
+
+  next();
+});
+
 app.use(express.json());
 
 // MongoDB Connection
