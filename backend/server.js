@@ -7,11 +7,7 @@ const jwt = require("jsonwebtoken")
 
 dotenv.config();
 const app = express();
-app.use(cors({
-  origin: ["https://shop-cart-zw33.vercel.app"],  // Allow requests from your frontend
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+app.use(cors());
 
 app.use(express.json());
 
@@ -40,11 +36,7 @@ app.post("/api/signup", async (req, res) => {
   try {
     const newUser = await User.create({ name, email, password: hashedPassword });
     res.status(201).json({ message: "User created successfully!" });
-    res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-zw33.vercel.app");
-res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-res.setHeader("Access-Control-Allow-Credentials", "true");
-
+    
   } catch (error) {
     res.status(500).json({ error: "Signup failed" });
   }
@@ -69,10 +61,7 @@ app.post("/api/login", async (req, res) => {
       const token = jwt.sign({ id: user._id, name: user.name }, process.env.JWT_SECRET, { expiresIn: "7d" });
   
       res.json({ token, user: { name: user.name, email: user.email, cart: user.cart } });
-      res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-zw33.vercel.app");
-res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-res.setHeader("Access-Control-Allow-Credentials", "true");
+     
 
     } catch (error) {
       res.status(500).json({ error: "Login failed. Please try again." });
@@ -90,10 +79,7 @@ app.post("/api/cart", async (req, res) => {
         { new: true }
       );
       res.json(user.cart);
-      res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-zw33.vercel.app");
-res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-res.setHeader("Access-Control-Allow-Credentials", "true");
+     
 
     } catch (error) {
       res.status(500).json({ error: "Failed to add item to cart." });
@@ -121,10 +107,7 @@ res.setHeader("Access-Control-Allow-Credentials", "true");
         { new: true }
       );
       res.json(user.cart);
-      res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-zw33.vercel.app");
-res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-res.setHeader("Access-Control-Allow-Credentials", "true");
+    
 
     } catch (error) {
       res.status(500).json({ error: "Failed to remove item from cart." });

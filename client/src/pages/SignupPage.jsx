@@ -8,11 +8,10 @@ export default function SignupPage() {
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
   const navigate = useNavigate();
 
-  axios.defaults.withCredentials=true
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("https://shop-cart-three-sand.vercel.app/api/signup", formData);
+    await axios.post("http://localhost:5000/api/signup", formData);
     setUser({ name: formData.name, email: formData.email });
     navigate("/");
   };
