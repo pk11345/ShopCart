@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken")
 dotenv.config();
 const app = express();
 app.use(cors({
-  origin: ["https://shop-cart-zw33.vercel.app", "http://localhost:5173"], // Add your frontend URL
+  origin: ["https://shop-cart-zw33.vercel.app/", "http://localhost:5173"], // Add your frontend URL
   credentials: true
 }));
 app.use(express.json());
