@@ -6,6 +6,8 @@ export default function CartPage() {
   const { user, setUser } = useContext(AuthContext);
   const [cart, setCart] = useState([]);
 
+  axios.defaults.withCredentials=true
+
   useEffect(() => {
     if (user) {
       axios.get(`https://shop-cart-three-sand.vercel.app/cart/${user.email}`)

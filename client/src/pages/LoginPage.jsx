@@ -10,6 +10,8 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  axios.defaults.withCredentials=true
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError(""); // Reset error message before making a request

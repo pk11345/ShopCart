@@ -19,6 +19,10 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.error(err));
 
+  app.get("/",(req,res)=>{
+    res.json("hello")
+  })
+
 // User Schema & Model
 const userSchema = new mongoose.Schema({   
   name: String,
@@ -35,7 +39,7 @@ app.post("/api/signup", async (req, res) => {
   try {
     const newUser = await User.create({ name, email, password: hashedPassword });
     res.status(201).json({ message: "User created successfully!" });
-    res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-three-sand.vercel.app");
+    res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-zw33.vercel.app");
 res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
 res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -64,7 +68,7 @@ app.post("/api/login", async (req, res) => {
       const token = jwt.sign({ id: user._id, name: user.name }, process.env.JWT_SECRET, { expiresIn: "7d" });
   
       res.json({ token, user: { name: user.name, email: user.email, cart: user.cart } });
-      res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-three-sand.vercel.app");
+      res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-zw33.vercel.app");
 res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
 res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -85,7 +89,7 @@ app.post("/api/cart", async (req, res) => {
         { new: true }
       );
       res.json(user.cart);
-      res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-three-sand.vercel.app");
+      res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-zw33.vercel.app");
 res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
 res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -116,7 +120,7 @@ res.setHeader("Access-Control-Allow-Credentials", "true");
         { new: true }
       );
       res.json(user.cart);
-      res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-three-sand.vercel.app");
+      res.setHeader("Access-Control-Allow-Origin", "https://shop-cart-zw33.vercel.app");
 res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
 res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 res.setHeader("Access-Control-Allow-Credentials", "true");

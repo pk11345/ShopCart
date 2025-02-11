@@ -10,6 +10,8 @@ export default function ProductPage() {
   const [product, setProduct] = useState(null);
   const [message, setMessage] = useState("");
 
+  axios.defaults.withCredentials=true
+
   useEffect(() => {
     axios.get(`https://fakestoreapi.com/products/${id}`)
       .then(response => setProduct(response.data))
