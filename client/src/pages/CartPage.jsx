@@ -23,7 +23,7 @@ export default function CartPage() {
 
   const removeFromCart = async (id) => {
     try {
-      const updatedCart = await axios.post("http://localhost:5000/api/cart/remove", {
+      const updatedCart = await axios.post("https://shopcart-api-c1rh.onrender.com/api/cart/remove", {
         email: user.email,
         productId: id
       });
